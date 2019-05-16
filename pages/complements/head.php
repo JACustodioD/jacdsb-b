@@ -10,5 +10,5 @@
 <script type="text/javascript" src="../Librerias/jquery.min.js"></script>
 <script type="text/javascript" src="../Librerias/bootstrap/js/bootstrap.min.js"></script>
 
-<script type="text/javascript" src="../js/functions.js"></script>
 <script type="text/javascript" src="../Librerias/all.js"></script>
+<script type="text/javascript" src="../js/functions.js"></script>

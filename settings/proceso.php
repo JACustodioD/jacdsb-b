@@ -6,26 +6,22 @@ if (isset($_REQUEST['ac'])==1) {
 	require_once '../clases/Login.php';
 	$conexion = new Connection();
 
-	//echo "conexion echa";
 	//SI COD = 1 ES INICIO DE SESION
 	if (isset($_REQUEST['cod'])==1) {
 		if (isset($_REQUEST['sesion'])) {
 			$user = $_POST['user'];
 			$psw = $_POST['password'];
-			//echo "recibi valores";
 			if ($user != "" && $psw != "") {
 				$sql = "SELECT * FROM Login WHERE usuario ='$user' AND password = '$psw' ";
 				$result = $conexion->consulta($sql);
 				$datos = mysqli_num_rows($result);
-				//echo $datos;
-				//echo "hice consulta";
 				session_start();
 				if ($datos!= 0){
 					foreach ($result as $k) {
 						if ($k['estado_usuario']) {
-							//echo "usuario checado";
 							if ($k['tipo_usuario']=="administrador") {
-								echo "eres admini";
+								$_SESSION['admin'] = $user;
+								header("Location: ../pages/admin.php ");
 							}else{
 								$_SESSION['user'] = $user;
 								header("Location: ../pages/");
@@ -36,10 +32,12 @@ if (isset($_REQUEST['ac'])==1) {
 						}
 					}
 				}else{
-					echo "No esta registrado";
+					echo "<script> alert ('Registrate antes de inciar sesion'); </script>";
+					echo "<script> window.location.href= '../../jacdsb&b'; </script> ";
 				}
 			}else{
-				echo "estan vacias error";
+				echo "<script> alert ('Debes completar todos los campos.'); </script>";
+				echo "<script> window.location.href= '../../jacdsb&b'; </script> ";
 			}
 		}
 		//SI COD = 2 ES REGISTRO DE Usuario
@@ -47,46 +45,44 @@ if (isset($_REQUEST['ac'])==1) {
 		if (isset($_REQUEST['registro'])) {
 			$user = $_POST['email'];
 			$psw = $_POST['password'];
-			//echo "si es cod";
 			if ($user != "" && $psw != "") {
 				$usuario = new Usuario($_POST['nombre'],$_POST['apellidoP'],$_POST['apellidoM'],$_POST['sexo'],$user,$_POST['direccion']);
-				$nuevo = new Login($user,$psw,"usuario","1");
-				 //echo "no estan vacios";	
+				$nuevo = new Login($user,$psw,"usuario","1");	
 				if ($usuario->guardar()) {
-					//echo "ya se guardo usuario";
 					if($nuevo->guardar()){
 						echo "<script> alert ('Usted se ha registrado, por favor inicie sesioin'); </script>";
 						echo "<script> window.location.href= '../../jacdsb&b'; </script> ";
 					}else{
-						echo "no se registro nada";
+						echo "<script> alert ('No se pudo realizar el registro.'); </script>";
 					}
 				}else{
 					echo "<script> alert ('El correo ya pertenece a una cuenta existente'); </script>";
 					echo "<script> window.location.href= '../../jacdsb&b'; </script> ";
 				}
 			}else{
-				echo "estan vacias";
+				echo "<script> alert ('No se selecciono nada'); </script>";
+				echo "<script> window.location.href= '../../jacdsb&b'; </script> ";
 			}
 
 		}
 	}if (isset($_REQUEST['cod']) ==3) {
-		if (isset($_REQUEST['p'])) {
-			if (isset($_REQUEST['id']) != "") {
+		if (isset($_POST['precio'])) {
+			if (isset($_POST['id']) != "") {
 			session_start();
 			if (isset($_SESSION['user'])) {
-				$id = $_REQUEST['id'];
+				$id = $_POST['id'];
 				$user = $_SESSION['user'];
-				$total = 1 * $_REQUEST['p'];
+				$total = 1 * $_POST['precio'];
 				$sql = "INSERT INTO Carrito (usuario,producto,cantidad,total) VALUES ('$user','$id','1','$total'); ";
 				$conexion->consulta($sql);
-				echo "<script> window.location.href='../pages/'; </script>";
+				echo "3";
 			}else{
-				echo "<script> alert('Por favor. Inicie session primero'); </script>";
-				echo "<script> window.location.href='../../jacdsb&b'; </script>";
+				echo "2";
+				
 			}
 		}else{
-			echo "no selecciono un producto 3 <br>";
-			//header("Location: ../../Examen2");
+			echo "1";
+
 		}
 		}
 		
@@ -105,8 +101,9 @@ if (isset($_REQUEST['ac'])==1) {
 					echo "<script> window.location.href='../../jacdsb&b'; </script>";
 				}
 			}else{
-				echo "no selecciono un producto para eliminar 4 <br>";
-				//header("Location: ../../Examen2");
+				echo "<script> alert ('Seleccione un producto para eliminar'); </script>";
+				echo "<script> window.location.href= '../pages/carrito.php'; </script> ";
+
 			}	
 		}
 		

@@ -84,10 +84,10 @@ session_start();
 				    <div class="carousel-caption fondoTextS">
           			  	<h5 id="slider1N">Mochila con cargador de bateria</h5>
           				<p id="slider1P">Precio especial de $200.00</p>
-          				<button class="btn btn-warning" id="slider1">
+          				<!--<button class="btn btn-warning" id="slider1">
           					Comprar
           					<i class="fas fa-cart-plus"></i>
-          				</button>
+          				</button>-->
         			</div>
 				</div>
 				<div class="carousel-item" data-interval="2000">
@@ -95,10 +95,7 @@ session_start();
 				    <div class="carousel-caption fondoTextS">
           			  	<h5>Mochila con cargador de bateria</h5>
           				<p>Precio especial de $200.00</p>
-          				<button class="btn btn-warning">
-          					Comprar
-          					<i class="fas fa-cart-plus"></i>
-          				</button>
+          				
         			</div>
 				</div>
 				<div class="carousel-item">
@@ -106,10 +103,7 @@ session_start();
 				    <div class="carousel-caption fondoTextS">
           			  	<h5>Mochila con cargador de bateria</h5>
           				<p>Precio especial de $200.00</p>
-          				<button class="btn btn-warning">
-          					Comprar
-          					<i class="fas fa-cart-plus"></i>
-          				</button>
+          				
         			</div>
 				</div>
   			</div>
@@ -290,12 +284,24 @@ session_start();
 	<script type="text/javascript" src="Librerias/all.js"></script>
 
   <script type="text/javascript">
-    $(".btnAgregar").click(function(){
+     $(".btnAgregar").click(function(){
       var id = $(this).attr('idProducto');
       var p  = $(this).attr('precioProducto');
-      
-      window.location.href = 'settings/proceso.php?ac=1&cod=3&id='+id+"&p="+p;
-      
+      var cadena = "id="+id+"&precio="+p;
+      $.ajax({
+        type:"POST",
+        url:"settings/proceso.php?ac=1&cod=3",
+        data: cadena,
+        success:function(r){
+          if (r==1) {
+            alert("No selecciono producto");
+          }else if(r==2){
+            alert("Inicia Sesion");
+          }else{
+            alert("Producto agregado");
+          }
+        }
+      });
     });
   </script>
 

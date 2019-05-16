@@ -93,17 +93,13 @@ if (isset($_SESSION['user']) ) {
     <?php require_once("complements/modal.php"); ?>
   <!-- MODAL PARA INICIO Y REGISTRO -->
 
-<script>
-  
+  <script type="text/javascript">
     $(".btnAgregar").click(function(){
       var id = $(this).attr('idProducto');
       var p  = $(this).attr('precioProducto');
-      
-      window.location.href = '../settings/proceso.php?ac=1&cod=3&id='+id+"&p="+p;
+      agregarCarrito(id,p);
       
     });
-
-</script>
-
+  </script>
 </body>
 </html>
