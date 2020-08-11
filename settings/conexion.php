@@ -1,10 +1,10 @@
 <?php
 
 class Connection{
-	private $user = "server-provi";
-	private $password = "<ProSyste3;2#";
+	private $user = "";
+	private $password = "";
 	private $server = "localhost";
-	private $database = "Tienda";
+	private $database = "";
 	private $conexion;
 	
 	function __construct(){
