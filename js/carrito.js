@@ -58,8 +58,74 @@ function add_item(product, price) {
     
     alert("Producto agregado")
 
+}
+
+
+function update_car(product, amount) {
+    let products = JSON.parse(localStorage.getItem('car'));
+    let index_product = exist_item(products, product);
+
+    if(index_product) {
+        products[index_product]['amount'] = amount;
+        products[index_product]['total'] = parseFloat(products[index_product]['price']) * parseFloat(amount) 
+        
+        window.localStorage.setItem('car', JSON.stringify(products));
+    }
+
+    show_car_items();
+}
+
+function delete_product(product) {
+    let products = JSON.parse(localStorage.getItem('car'));
+    let index_product = exist_item(products, product);
+
+    if(index_product) {
+
+        let product_deleted = products.splice(index_product, 1);  
+
+        if(products.length == 0){
+            localStorage.removeItem('car');
+        } else {
+            window.localStorage.setItem('car', JSON.stringify(products));
+        }
+        
+
+        return true;
+    } else {
+        return false;
+    }
 
 }
+
+function show_car_items() {
+    let products = JSON.parse(localStorage.getItem('car'));
+
+    $("#table-content").html("");
+    let tr = '';
+
+    if(products != null) {
+        for(let i=0; i<products.length; i++){
+            tr = `
+                <tr>
+                    <td scope="row">${products[i]['product']}</td>
+                    <td><input class="amount_item" type="number" value = "${products[i]['amount']}" product = "${products[i]['product']}"> </td>
+                    <td>${products[i]['price']}</td>
+                    <td>${products[i]['total']}</td>
+                    <td> <button class ="btn btn-outline-danger btn-delete" product = "${products[i]['product']}"><i class="far fa-trash-alt"></i></button>  </td>
+                </tr>
+            `;
+            $("#table-content").append(tr)
+        }
+    } else {
+        let tr = `
+            <tr>
+                <td scope="row" colspan="5" class="text-primary"> No hay productos en el carrito</td>
+            </tr>
+        `;
+        $("#table-content").append(tr)
+    }
+}
+
 
 
 function exist_item(products, product) {

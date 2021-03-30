@@ -17,7 +17,7 @@
  }else{
  
   echo "<script> alert('Debes iniciar sesion primero'); </script>";
-  echo "<script> window.location.href='../../jacdsb&b'; </script>"; }
+  echo "<script> window.location.href='../../jacdsb-b'; </script>"; }
 ?>
 
 <!DOCTYPE html>
@@ -40,6 +40,34 @@
   <?php require_once("complements/navUsuario.php"); ?>
 	<!--  NAV -->
 
+  <!-- SECTION CAR -->
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+        <h2 class="text-center">Carrito</h2>
+
+        <div class="table-responsive">
+            <table class="table text-center">
+              <thead>
+                <tr>
+                  <th scope="col">Producto</th>
+                  <th scope="col">Cantidad</th>
+                  <th scope="col">Precio</th>
+                  <th scope="col">Total</th>
+                  <th scope="col">Eliminar</th>
+                </tr>
+              </thead>
+              <tbody id="table-content">
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- SECTION CAR -->
 
 	<!-- SECTION -->
 	<section>
@@ -98,7 +126,47 @@
 
 
 	<script type="text/javascript" src="../js/carrito.js"></script>
-  
+
+  <script>
+
+    $(document).ready(function(){
+      show_car_items();
+
+
+      $(document).on("change", ".amount_item", function(){
+        let value = $(this).val();
+        let product = $(this).attr("product");
+        
+        if(value <= 0 ) {
+          $(this).val(1);
+          value = 1;
+        } 
+        update_car(product, value);
+      });
+
+      $(document).on("click", ".btn-delete", function(){
+        let product = $(this).attr("product");
+
+        let confirm_delete = confirm("¿Desea eliminar este producto?");
+
+        if(confirm_delete) {
+          if(delete_product(product) ) {
+            alert("Producto eliminado");
+          } else {
+            alert("El producto no se encontro revise su carrito");
+          }
+        } 
+
+        amount_items();
+        show_car_items();
+
+      });
+      
+    });
+    
+</script>
+
+
 <script>
   $(".eliminarP").click(function(){
     var eliminar = $(this).attr('idProducto');

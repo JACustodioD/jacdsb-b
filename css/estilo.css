@@ -78,8 +78,8 @@ aside h3{
 
 
 section{
-	background-image: url("../images/fondo2.jpg");
-	background-size: cover;
+	/*background-image: url("../images/fondo2.jpg");
+	background-size: cover;*/
 	height: 70%;
 	max-width: all;
 	
