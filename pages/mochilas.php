@@ -1,36 +1,41 @@
 <?php
- require_once '../settings/conexion.php';
- session_start();
- $con = new Connection();
+session_start();
+require_once '../settings/connection.php';
+require_once '../clases/Product.php';
+require_once '../clases/User.php';
 
 if (isset($_SESSION['user']) ) {
   $usuario = $_SESSION['user'];
-  
-  $sql = "SELECT * FROM Usuario WHERE email = '$usuario' ";
-  $result = $con->consulta($sql);
-  foreach ($result as $k) {
-      $nombre = $k['nombre'];
-      $ap = $k['apellidoP'];
-    }  
+  $conexion = new Connection();
+  $product = new Product($conexion); 
+  $userData = new User(); 
+    if($userData->getUserData($usuario)) {
+
+    } else {
+
+    }
+}else{
+  header("Location: ../../jacdsb-b");
 }
 
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<title>Mochilas</title>
-  <?php require_once 'complements/head.php'; ?>
+
+
+	<title>Bolsas</title>
+   <?php require_once 'complements/head.php'; ?>
 
 </head>
 <body>
 
 	<!--  HEADER -->
-<?php require_once("complements/header.php"); ?>
-	</header>
+ 	<?php require_once("complements/header.php"); ?>
 	<!--  HEADER -->
 
 	<!--  NAV -->
-  <?php 
+   <?php 
   if (isset($_SESSION['user']) != "") {
     require_once ("complements/navUsuario.php");
   }else{
@@ -38,36 +43,32 @@ if (isset($_SESSION['user']) ) {
   }
 
   ?>
-
 	<!--  NAV -->
-
 
 
 	<!-- SECTION -->
 	<section>
     <h3>Mochilas</h3>
-    <div class="row">
+		<div class="row">
 
       <?php 
-        $sql = "SELECT * FROM Producto WHERE tipoProducto = 'Mochila' ";
-        $result = $con->consulta($sql);
-        $datos = mysqli_num_rows($result);
+        $products = $product->getProductsPerCategory("Mochila");
 
-        if ($datos == 0) {
+        if (!$products) {
         }else{
-          foreach ($result as $k) {
+          foreach ($products as $dataProduct) {
           ?>
             <div class="col-sm-12 col-md-3 mt-2">
               <div class="card" style="width: 18rem;">
-                <img src="../images/<?php echo $k['imagen'] ?>" class="card-img-top" alt="..." height="270px">
+                <img src="../images/<?php echo $dataProduct['imagen'] ?>" class="card-img-top" alt="..." height="270px">
                 <div class="card-body">
-                  <h5 class="card-title"><?php echo $k['nombre'] ?></h5>
+                  <h5 class="card-title"><?php echo $dataProduct['nombre'] ?></h5>
                   <hr>
-                  <p class="card-text"><?php echo $k['descripcion'] ?></p><hr>
-                  <p class="card-text"><?php echo "Precio: $".$k['precio'] ?></p>
+                  <p class="card-text"><?php echo $dataProduct['descripcion'] ?></p><hr>
+                  <p class="card-text"><?php echo "Precio: $".$dataProduct['precio'] ?></p>
                   <hr>
                   <center>
-                    <button class="btn btn-primary btnAgregar" idProducto = "<?php echo $k['idProducto'] ?>" precioProducto = "<?php echo $k['precio'] ?>">
+                    <button class="btn btn-primary btn-add" idProducto = "<?php echo $dataProduct['idProducto'] ?>" precioProducto = "<?php echo $dataProduct['precio'] ?>">
                     Agregar
                     <i class="fas fa-cart-plus"></i>
                   </button>
@@ -79,10 +80,10 @@ if (isset($_SESSION['user']) ) {
           }
         }
       ?>
-      
+			
 
-    </div>
-  </section>
+		</div>
+	</section>
 	<!-- SECTION -->
 
 	<!-- FOOTER -->
@@ -93,13 +94,6 @@ if (isset($_SESSION['user']) ) {
     <?php require_once("complements/modal.php"); ?>
   <!-- MODAL PARA INICIO Y REGISTRO -->
 
-  <script type="text/javascript">
-    $(".btnAgregar").click(function(){
-      var id = $(this).attr('idProducto');
-      var p  = $(this).attr('precioProducto');
-      agregarCarrito(id,p);
-      
-    });
-  </script>
+	<script type="text/javascript" src="../js/carrito.js"></script>
 </body>
 </html>

@@ -84,7 +84,7 @@ if (isset($_REQUEST['ac'])==1) {
 		}
 		}
 		
-	}if (isset($_REQUEST['cod']) == 4){
+	}if (isset($_REQUEST['cod']) == 4){ /** Fuera de uso **/
 		if (isset($_REQUEST['prod'])) {
 			if (isset($_REQUEST['prod']) != "") {
 				session_start();

@@ -28,11 +28,12 @@
     			<li class="nav-item">
     				<a href="" class="nav-link" data-toggle="modal" data-target="#exampleModal">Ingresa <i class="far fa-user-circle"></i></a>
     			</li>
-    			<li class="nav-item">
-    				<a href="carrito.php" class="nav-link">
-    					Carrito <i class="fas fa-shopping-cart"></i>
-    				</a>
-    			</li>
+				<li class="nav-item">
+            		<a href="carrito.php" class="nav-link">
+            			<span class="badge bg-primary" id="total_items"></span> 
+              			Carrito <i class="fas fa-shopping-cart"></i>
+            		</a>
+          		</li>
     		</ul>
   		</div>
 	</nav>

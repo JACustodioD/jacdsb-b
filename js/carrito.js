@@ -89,7 +89,6 @@ function delete_product(product) {
             window.localStorage.setItem('car', JSON.stringify(products));
         }
         
-
         return true;
     } else {
         return false;
@@ -124,6 +123,8 @@ function show_car_items() {
         `;
         $("#table-content").append(tr)
     }
+
+    total_car(products);
 }
 
 
@@ -135,4 +136,19 @@ function exist_item(products, product) {
             return index
         }
     }
+}
+
+function total_car(products){
+    let total = 0;
+
+    for(let i in products){
+        total = parseFloat(products[i]['total']) + parseFloat(total) 
+    }
+
+    localStorage.setItem('total_car', total);
+
+    let total_car = $("#total_car");
+    total_car.text("$"+localStorage.getItem('total_car'));
+
+
 }

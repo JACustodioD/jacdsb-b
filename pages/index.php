@@ -15,7 +15,7 @@ if (isset($_SESSION['user']) ) {
 
     }
 }else{
-  header("Location: ../../jacdsb&b");
+  header("Location: ../../jacdsb-b");
 }
 
 

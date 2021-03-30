@@ -31,6 +31,25 @@ class Product{
 
 	}
 
+	public function getProductsPerCategory($categoryProduct){
+        $query = "SELECT * FROM ".self::TABLE_NAME." WHERE tipoProducto = '{$categoryProduct}' ";
+
+		$products = $this->connection->get_data($query);
+
+		
+		if (mysqli_num_rows($products)) {
+			
+			foreach($products as $product) {
+				$product['precio'] = number_format($product['precio'], 2, ".", ",");
+			}
+			
+			return $products;
+		} else {
+			return false;
+		}
+
+	}
+
 	/**** Getters AND Setters ****/
 	public function setProductID($productID){ 
 		$this->productID = $productID;
