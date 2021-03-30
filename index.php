@@ -1,8 +1,11 @@
 <?Php
-require_once 'settings/conexion.php';
-$con = new Connection(); 
+require_once 'settings/connection.php';
+require_once 'clases/Product.php';
+$connection = new Connection();
+$product = new Product($connection); 
 session_start();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +37,7 @@ session_start();
 	<!--  HEADER -->
 
 	<!--  NAV -->
-	<nav class="navbar navbar-expand-lg ">
+	<nav class="navbar navbar-expand-lg sticky-top">
   		<a class="navbar-brand" href="../jacdsb&b">JACD's B&B</a>
 
   		<button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,7 +69,7 @@ session_start();
     			</li>
     			<li class="nav-item">
     				<a href="pages/carrito.php" class="nav-link">
-    					Carrito <i class="fas fa-shopping-cart"></i>
+					<span class="badge bg-primary" id="total_items"></span> Carrito <i class="fas fa-shopping-cart"></i>
     				</a>
     			</li>
     		</ul>
@@ -124,39 +127,37 @@ session_start();
 	<!-- SECTION -->
 	<section>
 		<div class="row">
-				  <?php 
-            $sql = "SELECT * FROM Producto";
-            $result = $con->consulta($sql);
-            $datos = mysqli_num_rows($result);
-
-            if ($datos == 0) {
+			<?php 
+				$products = $product->getProducts();
+				
+            	if (!$products) {
         
-            }else{
-            foreach ($result as $k) {
-          ?>
-          <div class="col-sm-12 col-md-3 mt-2">
-            <div class="card" style="width: 18rem;">
-              <img src="images/<?php echo $k['imagen'] ?>" class="card-img-top" alt="..." height="270px">
-              <div class="card-body">
-                <h5 class="card-title"><?php echo $k['nombre'] ?> </h5>
-                <hr>
-                <p class="card-text"><?php echo $k['descripcion'] ?></p><hr>
-                <p class="card-text"><?php echo "Precio: $".$k['precio'] ?> </p>
-                <hr>
-                <center>
-                  <button class="btn btn-primary btnAgregar" idProducto = "<?php echo $k['idProducto'] ?>" precioProducto = "<?php echo $k['precio'] ?>">
-                    Agregar
-                    <i class="fas fa-cart-plus"></i>
-                  </button>
-                </center>
-              </div>
-            </div>
-          </div>
-          <?php
-              }
-            }
-          ?>
-    </div>
+            	}else{
+            		foreach ($products as $product) {
+          	?>
+          	<div class="col-sm-12 col-md-3 mt-2">
+            	<div class="card" style="width: 18rem;">
+              		<img src="images/<?php echo $product['imagen'] ?>" class="card-img-top" alt="..." height="270px">
+              		<div class="card-body">
+                		<h5 class="card-title"><?php echo $product['nombre'] ?> </h5>
+                		<hr>
+                		<p class="card-text"><?php echo $product['descripcion'] ?></p><hr>
+                		<p class="card-text"><?php echo "Precio: $".$product['precio'] ?> </p>
+                		<hr>
+                		<center>
+                  			<button class="btn btn-primary btn-add" idProducto = "<?php echo $product['idProducto'] ?>" precioProducto = "<?php echo $product['precio'] ?>">
+                    			Agregar
+                    			<i class="fas fa-cart-plus"></i>
+                  			</button>
+                		</center>
+              		</div>
+            	</div>
+          	</div>
+          	<?php
+            		}
+            	}
+          	?>
+    	</div>
 	</section>
 	<!-- SECTION -->
 
@@ -281,14 +282,19 @@ session_start();
 	</div>
 	<!-- Registro -->
 
+	<!-- Mensaje -->
+
+	<!-- Mensaje -->
 	<script type="text/javascript" src="Librerias/all.js"></script>
+	<script type="text/javascript" src="js/carrito.js"></script>
 
   <script type="text/javascript">
-     $(".btnAgregar").click(function(){
+     /*$(".btn-add").click(function(){
       var id = $(this).attr('idProducto');
       var p  = $(this).attr('precioProducto');
       var cadena = "id="+id+"&precio="+p;
-      $.ajax({
+
+		 $.ajax({
         type:"POST",
         url:"settings/proceso.php?ac=1&cod=3",
         data: cadena,
@@ -302,7 +308,7 @@ session_start();
           }
         }
       });
-    });
+    });*/
   </script>
 
 

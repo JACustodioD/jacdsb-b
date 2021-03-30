@@ -1,4 +1,4 @@
-  <nav class="navbar navbar-expand-lg ">
+  <nav class="navbar navbar-expand-lg sticky-top">
       <a class="navbar-brand" href="../pages">JACD's B&B</a>
 
       <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,12 +24,13 @@
         <ul class="navbar-nav ml-auto">
            <li class="nav-item">
             <label class="nav-link">
-              <?php echo $nombre." ".$ap ?>  
+              <?php echo "{$userData->getName()} {$userData->getLastName()}"; ?>  
               <i class="far fa-user-circle"></i>
             </label>
           </li>
           <li class="nav-item">
             <a href="carrito.php" class="nav-link">
+            <span class="badge bg-primary" id="total_items"></span> 
               Carrito <i class="fas fa-shopping-cart"></i>
             </a>
           </li>

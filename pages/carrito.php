@@ -1,21 +1,23 @@
 <?php
- require_once '../settings/conexion.php';
+ require_once '../settings/connection.php';
+ require_once '../clases/User.php';
  session_start();
+
  $conexion = new Connection();
 
-if (isset($_SESSION['user']) ) {
-  $usuario = $_SESSION['user'];
-  
-  $sql = "SELECT * FROM Usuario WHERE email = '$usuario' ";
-  $result = $conexion->consulta($sql);
-  foreach ($result as $k) {
-      $nombre = $k['nombre'];
-      $ap = $k['apellidoP'];
-    }  
-}else{
+ if (isset($_SESSION['user']) ) {
+   $usuario = $_SESSION['user'];
+   $conexion = new Connection();
+   $userData = new User(); 
+     if($userData->getUserData($usuario)) {
+ 
+     } else {
+ 
+     }
+ }else{
+ 
   echo "<script> alert('Debes iniciar sesion primero'); </script>";
-  echo "<script> window.location.href='../../jacdsb&b'; </script>"; 
-}
+  echo "<script> window.location.href='../../jacdsb&b'; </script>"; }
 ?>
 
 <!DOCTYPE html>
@@ -45,7 +47,7 @@ if (isset($_SESSION['user']) ) {
     <a href="../pages" class="btn btn-success">Volver</a>
 		<div class="row">
       <div class="col-sm-12 col-md-12">
-        <?php require_once "complements/tablaC.php"; ?>
+        <?php //require_once "complements/tablaC.php"; ?>
         <h3>Total es: $<?php echo $total; ?></h3>
         <center>
 
@@ -95,7 +97,8 @@ if (isset($_SESSION['user']) ) {
 	<!-- FOOTER -->
 
 
-
+	<script type="text/javascript" src="../js/carrito.js"></script>
+  
 <script>
   $(".eliminarP").click(function(){
     var eliminar = $(this).attr('idProducto');

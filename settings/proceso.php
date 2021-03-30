@@ -1,8 +1,8 @@
 <?php
 //ACCESO A LA PAGINA DE PROCESO
 if (isset($_REQUEST['ac'])==1) {
-	require_once 'conexion.php';
-	require_once '../clases/Usuario.php';
+	require_once 'connection.php';
+	//require_once '../clases/Usuario.php';
 	require_once '../clases/Login.php';
 	$conexion = new Connection();
 
@@ -12,28 +12,26 @@ if (isset($_REQUEST['ac'])==1) {
 			$user = $_POST['user'];
 			$psw = $_POST['password'];
 			if ($user != "" && $psw != "") {
-				$sql = "SELECT * FROM Login WHERE usuario ='$user' AND password = '$psw' ";
-				$result = $conexion->consulta($sql);
-				$datos = mysqli_num_rows($result);
+				$userSession = new Login();
 				session_start();
-				if ($datos!= 0){
-					foreach ($result as $k) {
-						if ($k['estado_usuario']) {
-							if ($k['tipo_usuario']=="administrador") {
-								$_SESSION['admin'] = $user;
-								header("Location: ../pages/admin.php ");
-							}else{
-								$_SESSION['user'] = $user;
-								header("Location: ../pages/");
-							}
+				if ($userSession->signIn($user, $psw)){
+					if ($userSession->getActive()) {
+						if ($userSession->getUserType() == "administrador") {
+							$_SESSION['admin'] = $userSession->getUser();
+							header("Location: ../pages/admin.php ");
 						}else{
-							echo "<script> alert ('Tu cuenta aun no es verificada. No tienes acceso'); </script>";
-							echo "<script> window.location.href= '../../jacdsb&b'; </script> ";
+							$_SESSION['user'] = $userSession->getUser();
+							header("Location: ../pages/");
 						}
+					}else{
+						echo "<script> alert ('Tu cuenta aun no es verificada. No tienes acceso'); </script>";
+						echo "<script> window.location.href= '../../jacdsb&b'; </script> ";
 					}
+
+
 				}else{
 					echo "<script> alert ('Registrate antes de inciar sesion'); </script>";
-					echo "<script> window.location.href= '../../jacdsb&b'; </script> ";
+					echo "<script> window.location.href= '../../jacdsb-b'; </script> ";
 				}
 			}else{
 				echo "<script> alert ('Debes completar todos los campos.'); </script>";
@@ -65,7 +63,7 @@ if (isset($_REQUEST['ac'])==1) {
 			}
 
 		}
-	}if (isset($_REQUEST['cod']) ==3) {
+	}if (isset($_REQUEST['cod']) ==3) { /** Fuera de uso */ 
 		if (isset($_POST['precio'])) {
 			if (isset($_POST['id']) != "") {
 			session_start();
