@@ -230,27 +230,27 @@ session_start();
                 <div class="form-row">
                   <div class="form-group col-md-6">
                     <label for="inputEmail4">Nombre</label>
-                    <input type="text" class="form-control" name="nombre" placeholder="Nombre" required>
+                    <input type="text" class="form-control" name="name" placeholder="Nombre" required>
                   </div>
                   <div class="form-group col-md-6">
-                    <label for="inputPassword4">Apellido Paterno</label>
-                    <input type="text" class="form-control" name="apellidoP" placeholder="Apellido Paterno" required>
+                    <label for="lastName">Apellido Paterno</label>
+                    <input type="text" class="form-control" name="lastName" placeholder="Apellido Paterno" required>
                   </div>
                   <div class="form-group col-md-6">
-                    <label for="inputPassword4">Apellido Materno</label>
-                    <input type="text" class="form-control" name="apellidoM" placeholder="Apellido Materno" required>
+                    <label for="lastNameM">Apellido Materno</label>
+                    <input type="text" class="form-control" name="lastNameM" placeholder="Apellido Materno" required>
                   </div>
                   <div class="form-group col-md-6">
                     Sexo
                     <div class="form-check">
-                    <input class="form-check-input" type="radio" name="sexo" id="exampleRadios1" value="Masculino" checked>
-                    <label class="form-check-label" for="exampleRadios1">
+                    <input class="form-check-input" type="radio" name="gender" id="gender-option" value="Masculino" checked>
+                    <label class="form-check-label" for="gender-option">
                       Masculino
                    </label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="sexo" id="exampleRadios1" value="Femenino" >
-                    <label class="form-check-label" for="exampleRadios1">
+                    <input class="form-check-input" type="radio" name="gender" id="gender-option" value="Femenino" >
+                    <label class="form-check-label" for="gender-option">
                       Femenino
                    </label>
                   </div>
@@ -258,12 +258,12 @@ session_start();
                 </div>
                 <div class="form-row">
                   <div class="form-group col-md-6">
-                    <label for="inputEmail4">Correo electronico</label>
-                    <input type="email" class="form-control" name="email" placeholder="Email" required="">
+                    <label for="email">Correo electronico</label>
+                    <input type="email" class="form-control" name="email" placeholder="Email" required>
                   </div>
                   <div class="form-group col-md-6">
-                    <label for="inputPassword4">Contraseña</label>
-                    <input type="password" class="form-control" name="password" id="psw1" placeholder="Password" required>
+                    <label for="input-pass">Contraseña</label>
+                    <input type="password" class="form-control" name="password" id="input-pass" placeholder="Password" required>
                   </div>
                    <div class="form-group col-md-6 mt-4">
                     <!-- <label for="inputPassword4">Son diferentes</label> -->  
@@ -272,9 +272,9 @@ session_start();
                
                 <div class="form-group">
                   <label for="inputAddress">Dirección</label>
-                  <input type="text" class="form-control" name="direccion" placeholder="1234 Main St">
+                  <input type="text" class="form-control" name="address" placeholder="1234 Main St">
                 </div>
-                <button class="btn btn-lg btn-primary btn-block mt-2" name="registro" type="submit">Registrarse</button>
+                <button class="btn btn-lg btn-primary btn-block mt-2" name="register" type="submit">Registrarse</button>
               </form>
       			</div>
     		</div>
@@ -287,30 +287,6 @@ session_start();
 	<!-- Mensaje -->
 	<script type="text/javascript" src="Librerias/all.js"></script>
 	<script type="text/javascript" src="js/carrito.js"></script>
-
-  <script type="text/javascript">
-     /*$(".btn-add").click(function(){
-      var id = $(this).attr('idProducto');
-      var p  = $(this).attr('precioProducto');
-      var cadena = "id="+id+"&precio="+p;
-
-		 $.ajax({
-        type:"POST",
-        url:"settings/proceso.php?ac=1&cod=3",
-        data: cadena,
-        success:function(r){
-          if (r==1) {
-            alert("No selecciono producto");
-          }else if(r==2){
-            alert("Inicia Sesion");
-          }else{
-            alert("Producto agregado");
-          }
-        }
-      });
-    });*/
-  </script>
-
 
 </body>
 </html>

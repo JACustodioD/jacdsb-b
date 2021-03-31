@@ -14,9 +14,9 @@ class Connection{
 		}
 	}
 
-	function consulta($query){
+	function get_data($query){
 		try {
-			$result = $this->conexion->query($query);
+			$result = $this->connection->query($query);
 			if ($result) {
 				return $result;
 			}else{

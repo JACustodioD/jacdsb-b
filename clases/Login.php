@@ -1,6 +1,6 @@
 <?php 
 require_once("../settings/connection.php");
-//require_once("Usuario.php");
+//require_once("User.php");
 
 class Login{
 	private $user;
@@ -43,6 +43,27 @@ class Login{
 		
 	}
 
+
+	function createUser(){
+		if(!$this->getUser()){
+			return false;
+		}
+		if(!$this->getPassword()){
+			return false;
+		}
+		if(!$this->getUserType()){
+			return false;
+		}
+		if(!$this->getActive()){
+			return false;
+		}
+
+		$query = "INSERT INTO ". self::TABLE_NAME ." VALUES ('{$this->getUser()}', '{$this->getPassword()}', '{$this->getUserType()}', '{$this->getActive()}' )";
+
+		$result_query = $this->connection->get_data($query);
+
+		return $result_query;
+	}
 
 
 	function guardar(){
@@ -92,7 +113,19 @@ class Login{
 }
 /*
 $nuevo = new Login();
+$nuevo->setUser("prueba@prueba.com");
+$nuevo->setPassword("1234");
+$nuevo->setUserType("administrador");
+$nuevo->setActive(true);
 
+
+if($nuevo->createUser()) {
+	echo "usuario creado";
+} else {
+	echo "no se creo karnal";
+}
+
+/*
 $signin = $nuevo->signIn('asd@asd.com', "asd");
 
 echo $nuevo->getActive();

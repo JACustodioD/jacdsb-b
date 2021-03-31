@@ -34,6 +34,24 @@ class User{
 			return false;
 		}
 	}
+
+	function save(){
+		if(!$this->getEmail()){
+			return false;
+		}
+		if(!$this->getName()){
+			return false;
+		}
+		if(!$this->getLastName()){
+			return false;
+		}
+
+		$query = "INSERT INTO ". self::TABLE_NAME ." VALUES ('{$this->getEmail()}', '{$this->getName()}', '{$this->getLastName()}', '{$this->getLastNameM()}', '{$this->getGender()}', '{$this->getAddress()}')";
+
+		$result_query = $this->connection->get_data($query);
+
+		return $result_query;
+	}
 /*
 	function guardar(){
 		$sql = "INSERT INTO Usuario VALUES('$this->email','$this->nombre','$this->apellidoP','$this->apellidoM','$this->sexo','$this->direccion')";
@@ -73,7 +91,7 @@ class User{
 	
 
 	public function getLastNameM() {
-		return $this->lastName;
+		return $this->lastNameM;
 	}
 	
 	public function setGender($gender) {
@@ -102,12 +120,26 @@ class User{
 
 
 	public function getAddress() {
-		$this->address = $address;
+		return $this->address;
 	}
 	
 }
 /*
 $yo = new User();
+$yo->setName("Prueba");
+$yo->setLastName("Prueba P");
+$yo->setLastNameM("Prueba M");
+$yo->setEmail("p@p.com");
+$yo->setGender("Masculino");
+$yo->setAddress("que te importa");
+
+if($yo->save()){
+	echo "ya la armamos";
+}else {
+	echo "no entraste brou";
+}
+*/
+/*
 if($yo->getUserData("jacustodiod@gmail.com")) {
 	echo "Lo encontraste mano {$yo->getName()} {$yo->getLastName()}  {$yo->getLastNameM()}";
 } else {
