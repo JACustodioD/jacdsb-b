@@ -3,19 +3,17 @@ session_start();
 require_once '../settings/connection.php';
 require_once '../clases/Product.php';
 require_once '../clases/User.php';
+$conexion = new Connection();
+$product = new Product($conexion); 
 
 if (isset($_SESSION['user']) ) {
   $usuario = $_SESSION['user'];
-  $conexion = new Connection();
-  $product = new Product($conexion); 
   $userData = new User(); 
     if($userData->getUserData($usuario)) {
 
     } else {
 
     }
-}else{
-  header("Location: ../../jacdsb-b");
 }
 
 ?>

@@ -8,9 +8,15 @@ class Connection{
 	private $connection;
 	
 	function __construct(){
-		$this->connection = new mysqli($this->server, $this->user, $this->password, $this->database);
-		if ($mysqli->connect_errno) {
-    		echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+
+		if ($this->connection == null) {
+			try {
+				$this->connection = new mysqli($this->server, $this->user, $this->password, $this->database);
+			} catch (Exception $e) {
+				echo "Connection error".$e->getMessage();	
+			}
+		}else{
+			echo "there is a connection active";
 		}
 	}
 
@@ -20,11 +26,12 @@ class Connection{
 			if ($result) {
 				return $result;
 			}else{
-				return false;
+				echo "<script> alert('query faild); </script>";
 			}	
 		} catch (Exception $e) {
-			echo "error en la consulta";
+			echo "Error Query";
 		}
+
 	}
 }
 ?>
