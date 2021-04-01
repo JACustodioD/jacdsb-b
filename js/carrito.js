@@ -2,8 +2,8 @@ $(document).ready(function(){
     amount_items();
 
     $(".btn-add").click(function(){
-        let product = $(this).attr('idProducto');
-        let price  = $(this).attr('precioProducto');
+        let product = $(this).attr('product-ID');
+        let price  = $(this).attr('product-price');
 
         add_item(product, price);
     });

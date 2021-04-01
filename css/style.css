@@ -1,0 +1,162 @@
+
+h1{
+    display: inline-block;
+    border-bottom: 6px solid  rgba(220, 53, 69, 0.4);
+    border-radius: 20px;
+    font-family: helvetica;	
+}
+
+/*  HEADER */
+header {
+    background-image: url("../images/portada.jpg");
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    height: 650px;
+}
+
+/*  NAV */
+
+nav{
+    background-color: rgba(155, 155, 155, 0.2);
+    font-size: 18px;
+}
+.nav-fixed{
+    background-color: rgba(155, 155, 155, 0.9);
+    position:fixed;
+    z-index:1000;
+    top:0;
+    width: 100%;
+}
+nav a, nav label{
+    color: white;
+
+}
+nav a:hover{
+    color: #dc3545; 
+}
+/*  NAV */
+.principal-title{
+    color:#dc3545;
+    text-align: center;
+}
+
+/*  SLIDER  */
+
+.carousel-inner {
+    width: 50%;
+    margin-left: 260px;
+}
+
+.carousel-item{border: 1px solid  rgba(220, 53, 69, 0.4); border-radius: 5%;}
+.slider-arrow{color:white; font-size: 30px;}
+
+/*  SLIDER  */
+
+/*  HEADER */
+
+
+/*  MAIN  */
+main {
+    background-image: url("../images/fondo1.jpg");
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    
+    height: auto;
+    color: white;
+}
+
+.card{
+    width: 20rem;
+    color: whitesmoke;
+    border: 2px solid #dc3545;
+
+    background-color: rgba(0, 0, 0, 0.7);
+    overflow:hidden;
+
+}
+.card-header {height: 170px; background-color: white;}
+.card-img{
+    position: relative;
+    top: -81px;
+    left: -19px;
+    width: 50%;
+    height: 150px;
+    margin: 30%;
+}
+.card-title {height: 20px;}
+.card-text {height: 100px;}
+.card-price {height: 40px; background-color: transparent;}
+.divider-card{background-color: yellow;}
+
+/*  MAIN  */
+
+/*  FOOTER  */
+footer{
+    background-color: black;
+    color: #2d97c2;
+    font-family: helvetica;
+
+}
+
+.divider-footer{background-color: rgba(220, 53, 69, 0.4); width: 50%;}
+
+/*  FOOTER  */
+
+/*  MODALS  */
+
+.modal-header{
+    background-color: black;
+    font-family: helvetica;
+    color: whitesmoke;
+}
+
+.modal-title{font-size: 29px;}
+.close, .close:hover{color: white;}
+
+/*  MODALS  */
+
+
+/*  RESPONSIVE */
+
+@media(max-width: 969px){
+
+    /* SLIDER */
+    .carousel-inner {width: 100%; margin-left: 0%;}
+    .slider-arrow{ font-size: 20px;}
+    /* SLIDER */
+
+
+    /* CARDS */
+    .card{
+        width: 10rem;
+        height: 23rem;
+        color: #dc3545;
+        border: 2px solid #dc3545;
+        background-color: rgba(0, 0, 0, 0.7);
+        overflow:hidden;
+    }
+    .card-header {height: 140px; background-color: white;}
+    .card-img{
+        position: relative;
+        top: -73px;
+        left: -15px;
+        width: 50%;
+        height: 143px;
+        margin: 41%
+    }
+    .card-title {height: 20px; font-size: 15px;}
+    .card-text {height: 75px; font-size: 10px;}
+    .card-price {height: 10px; }
+    .divider-card{background-color: yellow;}
+    /* CARDS */
+    
+}
+
+/*  RESPONSIVE  */
+
+
+

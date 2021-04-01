@@ -78,8 +78,8 @@ aside h3{
 
 
 section{
-	/*background-image: url("../images/fondo2.jpg");
-	background-size: cover;*/
+	background-image: url("../images/fondo2.jpg");
+	background-size: cover;
 	height: 70%;
 	max-width: all;
 	
@@ -102,9 +102,6 @@ section h3{
 }
 .card:hover{
 	-webkit-transform:scale(0.9);transform:scale(0.9);
-}
-.card hr{
-	background-color: yellow;
 }
 .card-title{
 	color: #2d98c2;
