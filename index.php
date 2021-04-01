@@ -17,7 +17,8 @@
 	<link rel="shortcut icon" type="image/x-icon" href="images/icon.png">
 
     <!--  STYLE  -->
-    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="vendor/ohsnap/ohsnap.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <!--  STYLE  -->
 </head>
@@ -307,11 +308,18 @@
     <!-- Modal REGISTER -->
 
 
+    <!-- Message ohSnap  -->
+    <aside>
+        <div id="ohsnap"></div>
+    </aside>
+    <!-- Message ohSnap  -->
+
     <!-- SCRIPTS -->
     <script type="text/javascript" src="vendor/jquery.min.js"></script>
-	<script type="text/javascript" src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="vendor/bootstrap/bootstrap.js"></script>
 	<script type="text/javascript" src="vendor/all.js"></script>
 	<script type="text/javascript" src="js/sticky-menu.js"></script>
+	<script type="text/javascript" src="vendor/ohsnap/ohsnap.js"></script>
 	<script type="text/javascript" src="js/carrito.js"></script>
     <!-- SCRIPTS -->
 

@@ -56,7 +56,7 @@ function add_item(product, price) {
 
     amount_items();
     
-    alert("Producto agregado")
+    ohSnap('Producto agregado', {color: 'green', duration:'2000',icon:'fas fa-check-circle'});
 
 }
 

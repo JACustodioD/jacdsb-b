@@ -1,0 +1,38 @@
+/* ALERTS */
+/* inspired by Twitter Bootstrap */
+
+.ohsnap {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #eed3d7;
+    border-radius: 4px;
+    position: fixed;
+    bottom: 0px;
+    right: 21px;
+    /* Each ohsnap has its own width */
+    float: right;
+    clear: right;
+    background-color: white;
+    z-index: 4;
+  }
+  
+  .ohsnap-red {
+    color: white;
+    background-color: #DA4453;
+  }
+  .ohsnap-green {
+    color: white;
+    background-color: #37BC9B;
+  }
+  .ohsnap-blue {
+    color: white;
+    background-color: #4A89DC;
+  }
+  .ohsnap-yellow {
+    color: white;
+    background-color: #F6BB42;
+  }
+  .ohsnap-orange {
+    color:white;
+    background-color: #E9573F;
+  }
