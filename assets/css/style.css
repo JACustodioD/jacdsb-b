@@ -69,7 +69,7 @@ main {
     color: white;
 }
 
-.card{
+.card-product{
     width: 20rem;
     color: whitesmoke;
     border: 2px solid #dc3545;
@@ -78,8 +78,8 @@ main {
     overflow:hidden;
 
 }
-.card-header {height: 170px; background-color: white;}
-.card-img{
+.card-product-header {height: 170px; background-color: white;}
+.card-product-img{
     position: relative;
     top: -81px;
     left: -19px;
@@ -87,9 +87,9 @@ main {
     height: 150px;
     margin: 30%;
 }
-.card-title {height: 20px;}
-.card-text {height: 100px;}
-.card-price {height: 40px; background-color: transparent;}
+.card-product-title {height: 20px;}
+.card-product-text {height: 100px;}
+.card-product-price {height: 40px; background-color: transparent;}
 .divider-card{background-color: yellow;}
 
 /*  MAIN  */

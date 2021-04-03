@@ -9,22 +9,22 @@
                 {% if products %}
                 {% for product in products %}
                    <div class="col-6 col-md-4 my-3">
-                    <div class="card">
-                        <div class="card-header">
-                            <img src="/assets/img/{{ product.imagen }}" class="card-img" alt="producto-{{ product.tipoProducto }}">
+                    <div class="card card-product">
+                        <div class="card-header card-product-header">
+                            <img src="/assets/img/{{ product.imagen }}" class="card-product-img" alt="producto-{{ product.tipoProducto }}">
                         </div>
-                        <div class="card-body">
-                            <h4 class="card-title text-center"></h4>
+                        <div class="card-body card-product-body">
+                            <h4 class="card-title card-product-title text-center"></h4>
                             <hr class="divider-card">
-                            <p class="card-text">
+                            <p class="card-text card-product-text">
                                 {{ product.descripcion }}
                                 <br>
                                 <br>
                                 <span> Precio ${{ product.precio }}</span>   
                             </p>
                             <hr class="divider-card">
-                            <div class="card-price text-right">
-                            <button class="btn btn-outline-warning btn-add"  product-ID = "{{ product.idProducto }}" product-price = "{{ product.precio }}">
+                            <div class="card-product-price text-right">
+                            <button class="btn btn-outline-warning btn-add"  product-ID = "{{ product.idProducto }}"  product-name = "{{ product.nombre }}"  product-img = "{{ product.imagen }}"  product-price = "{{ product.precio }}" >
                                 Añadir
                                 <i class="fas fa-cart-plus"></i>
                                 </button>

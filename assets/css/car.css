@@ -1,0 +1,15 @@
+nav{ background-color: transparent;}
+
+body {
+    background-image: url("../img/fondo1.jpg");
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    
+    color: white;
+}
+
+
+.media{background-color: white; color: black; border: 2px solid black; }
+.media input{width: 80px;}
