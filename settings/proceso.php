@@ -31,24 +31,23 @@ function singin(){
 				if ($userSession->getActive()) {
 					if ($userSession->getUserType() == "administrador") {
 						$_SESSION['admin'] = $userSession->getUser();
-						header("Location: ../pages/admin.php ");
 					}else{
 						$_SESSION['user'] = $userSession->getUser();
-						header("Location: ../pages/");
+						header("Location: /");
 					}
 				}else{
 					echo "<script> alert ('Tu cuenta aun no es verificada. No tienes acceso'); </script>";
-					echo "<script> window.location.href= '../../jacdsb&b'; </script> ";
+					echo "<script> window.location.href= '/'; </script> ";
 				}
 
 
 			}else{
 				echo "<script> alert ('Registrate antes de inciar sesion'); </script>";
-				echo "<script> window.location.href= '../../jacdsb-b'; </script> ";
+				echo "<script> window.location.href= '/'; </script> ";
 			}
 		}else{
 			echo "<script> alert ('Debes completar todos los campos.'); </script>";
-			echo "<script> window.location.href= '../../jacdsb&b'; </script> ";
+			echo "<script> window.location.href= '/'; </script> ";
 		}
 	}
 }
@@ -75,19 +74,19 @@ function registerUser() {
 				$user_signin->setActive(true);
 				if($user_signin->createUser()){
 					echo "<script> alert ('Usted se ha registrado, por favor inicie sesioin'); </script>";
-					echo "<script> window.location.href= '../../jacdsb-b'; </script> ";
+					echo "<script> window.location.href= '/'; </script> ";
 				}else{
 					echo "<script> alert ('No se pudo realizar el registro.'); </script>";
 				}
 			}else {
 				echo "<script> alert ('El correo ya pertenece a una cuenta existente'); </script>";
-				echo "<script> window.location.href= '../../jacdsb-b'; </script> ";
+				echo "<script> window.location.href= '/'; </script> ";
 			
 			}
 
 		}else{
 			echo "<script> alert ('No se selecciono nada'); </script>";
-			echo "<script> window.location.href= '../../jacdsb-b'; </script> ";
+			echo "<script> window.location.href= '/'; </script> ";
 		}
 	}
 }

@@ -10,6 +10,9 @@ body {
     color: white;
 }
 
+.h1-modal{color: black;}
+#registerModal label {color: black;}
 
+.main-car{height: auto;}
 .media{background-color: white; color: black; border: 2px solid black; }
 .media input{width: 80px;}

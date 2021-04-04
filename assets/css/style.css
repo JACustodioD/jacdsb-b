@@ -13,7 +13,7 @@ header {
     background-size: cover;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    height: 650px;
+    height: 750px;
 }
 
 /*  NAV */
@@ -99,9 +99,10 @@ footer{
     background-color: black;
     color: #2d97c2;
     font-family: helvetica;
+    height: auto;
+    width: 100%;
 
 }
-
 .divider-footer{background-color: rgba(220, 53, 69, 0.4); width: 50%;}
 
 /*  FOOTER  */
