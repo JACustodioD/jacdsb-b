@@ -9,6 +9,10 @@ $(document).ready(function(){
 
         add_item(product, name, image, price);
     });
+
+    $("#btn-pay").click(function(){
+        ohSnap('¡Lo sentimos! Pero aún no contamos con un sistema de pagos', {color: 'blue', duration:'2000', icon:'fas fa-search-dollar'});
+    });
 });
 
 
@@ -206,7 +210,7 @@ function total_car(products){
     localStorage.setItem('total_car', total);
 
     let total_car = $("#total_car");
-    total_car.text("$"+localStorage.getItem('total_car'));
+    total_car.text("$"+localStorage.getItem('total_car')+" MXN");
 
 
 }

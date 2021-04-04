@@ -130,30 +130,12 @@ footer{
     .slider-arrow{ font-size: 20px;}
     /* SLIDER */
 
-
     /* CARDS */
-    .card{
-        width: 10rem;
-        height: 23rem;
-        color: #dc3545;
-        border: 2px solid #dc3545;
-        background-color: rgba(0, 0, 0, 0.7);
-        overflow:hidden;
+    .card-product{
+        width: auto;
     }
-    .card-header {height: 140px; background-color: white;}
-    .card-img{
-        position: relative;
-        top: -73px;
-        left: -15px;
-        width: 50%;
-        height: 143px;
-        margin: 41%
-    }
-    .card-title {height: 20px; font-size: 15px;}
-    .card-text {height: 75px; font-size: 10px;}
-    .card-price {height: 10px; }
-    .divider-card{background-color: yellow;}
-    /* CARDS */
+    .card-product-header {height: 200px; background-color: white;}
+/* CARDS */
     
 }
 

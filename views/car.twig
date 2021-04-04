@@ -22,14 +22,19 @@
 				</ul>
 			</div>
 			<div class="col-12 col-md-4 offset-md-2">
-				<div class="card border-dark mb-3" style="max-width: 18rem;">
+				<div class="card border-dark mb-3">
 					<div class="card-header" style="color: black;">Total del carrito</div>
 					<div class="card-body text-dark">
 						<!--<h5 class="card-title">Total a pagar</h5>-->
-						<hr class="divider-card">
 						<p class="card-text"> Total : <span  id="total_car"></span> </p>
 						<hr class="divider-card">
-						<button class="btn btn-block btn-outline-warning">Pagar</button>
+						{% if sesionUser %}
+						<button class="btn btn-block btn-outline-warning" id="btn-pay">Pagar</button>
+						{% else %}
+						<div class="alert alert-info" role="alert">
+							Debes iniciar sesión para poder continuar con el pago
+						</div>
+						{% endif %}
 					</div>
 				</div>
 		</div>
